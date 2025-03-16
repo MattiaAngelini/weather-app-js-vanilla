@@ -5,16 +5,22 @@
 // Un'icona che rappresenta le condizioni meteo.
 // Implementa una funzionalità per salvare le città cercate di recente in un array e visualizzarle come una lista.
 
-const userChoices = []
+//Non permettere duplicati alla lista
+//Cancella cronologia
+//Validazione input
+
+let searchedCity = []
+const searched = document.getElementById('searched')
+const card = document.querySelector('.card')
+const cardHeader = document.querySelector('.card-header')
+const cardText = document.querySelector('.card-text')
+const cardIcon = document.querySelector('.img-card')
 
 function search(){
+
     const cityChoice = document.getElementById('cityChoice').value
-    const card = document.querySelector('.card')
-    const cardHeader = document.querySelector('.card-header')
-    const cardText = document.querySelector('.card-text')
-    const cardIcon = document.querySelector('.img-card')
-    const searched = document.getElementById('searched')
     const li = document.createElement('li')
+
    //chiamata api
     fetch(`https://api.weatherapi.com/v1/current.json?key=a6ffe14779c64b6aa9b232703251503&q=${cityChoice}`)
     .then(response => {
@@ -25,22 +31,28 @@ function search(){
     })
     .then(data => {
     console.log('Risultato:', data);
-    
+
     //dopo chiamata compare card e viene popolata con dati API
     card.classList.remove('d-none')
     cardHeader.innerHTML = data.location.name + ' - ' + data.current.temp_c
     cardText.innerHTML = data.current.condition.text
     cardIcon.src = data.current.condition.icon
-    
-    //pusho in un array vuoto i name delle città cercate e li stampo in una lista
-    userChoices.push(data.location.name)
-    for (let i = 0; i < userChoices.length; i++) {
-        li.innerHTML = userChoices[i]
-        searched.appendChild(li)
-    }
-   
+  
+    searchedCity.push(data.location.name)
+
+    for (let i = 0; i < searchedCity.length; i++) {
+        
+            li.innerHTML = searchedCity[i]
+            searched.appendChild(li)
+        }
+
+    console.log(searchedCity)
     })
     .catch(error => {
     console.error('Errore nella richiesta:', error);
     });
+}
+
+function deleteChron(){
+    searched.innerHTML = ''
 }
