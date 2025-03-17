@@ -5,16 +5,14 @@
 // Un'icona che rappresenta le condizioni meteo.
 // Implementa una funzionalità per salvare le città cercate di recente in un array e visualizzarle come una lista.
 
-//Non permettere duplicati alla lista
-//Cancella cronologia
-//Validazione input
-
 let searchedCity = []
 const searched = document.getElementById('searched')
 const card = document.querySelector('.card')
 const cardHeader = document.querySelector('.card-header')
 const cardText = document.querySelector('.card-text')
 const cardIcon = document.querySelector('.img-card')
+const chronology = document.getElementById('chronology')
+const temperature = document.getElementById('temperature')
 
 function search(){
 
@@ -34,7 +32,9 @@ function search(){
 
     //dopo chiamata compare card e viene popolata con dati API
     card.classList.remove('d-none')
-    cardHeader.innerHTML = data.location.name + ' - ' + data.current.temp_c
+    chronology.classList.remove('d-none')
+    cardHeader.innerHTML = data.location.name + ' (' + data.location.country + ') ' + data.location.localtime.split('').slice(-5).join('')
+    temperature.innerHTML =   data.current.temp_c + ' ° '
     cardText.innerHTML = data.current.condition.text
     cardIcon.src = data.current.condition.icon
   
@@ -45,8 +45,6 @@ function search(){
             li.innerHTML = searchedCity[i]
             searched.appendChild(li)
         }
-
-    console.log(searchedCity)
     })
     .catch(error => {
     console.error('Errore nella richiesta:', error);
