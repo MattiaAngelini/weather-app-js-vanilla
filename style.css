@@ -14,22 +14,19 @@ body{
     background-color: rgb(206, 205, 207);
 }
 
-main{
-    min-height: 100vh;
-}
-
 h2,h3{
-    color: black;
+    color: rgb(0, 0, 0);
 }
 
-.ms-container{
-    background-color: rgb(116, 110, 193);
+#ms-container{
+    background-color: rgb(128, 78, 234);
     border-radius: 20px;
     min-width: 50%;
     margin: auto;
     box-shadow: 5px 10px #36383a;
     color: white;
 }
+
 input {
     border: none;
     border-radius: 10px;
@@ -37,4 +34,5 @@ input {
 }
 .card{
     min-width: 30%;
+    background-color: rgb(204, 201, 201);
 }

@@ -6,6 +6,7 @@ ESERCITAZIONE: Applicazione **Weather App** che permette all'utente di cercare i
 - **Cerca il meteo**: Inserisci il nome di una città per visualizzare le informazioni meteo.
 - **Dettagli**: Visualizza la temperatura, la descrizione delle condizioni e un'icona.
 - **Gestione degli errori**: Messaggi di errore per città non trovate o problemi di rete.
+- **Dark/Light Mode**: Bottone che cambia il tema dell'applicazione
 
 ## Tecnologie utilizzate
 - **HTML**: Struttura della pagina.
